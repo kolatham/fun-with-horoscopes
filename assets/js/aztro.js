@@ -9,7 +9,6 @@ function getAztro(requestUrl) {
 		return (response.json());
 	})
 	.then (function (data) {
-		console.log(data);
 		console.log(data.date_range);
 		console.log(data.current_date);
 		console.log(data.description);
@@ -18,7 +17,9 @@ function getAztro(requestUrl) {
 		console.log(data.color);
 		console.log(data.lucky_number);
 		console.log(data.lucky_time);
+		console.log("-----------------------------");
 	});
 }
 
+console.log("Here is the return from aztro");
 getAztro(aztroUrl);
