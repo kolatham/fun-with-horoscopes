@@ -26,11 +26,41 @@
 
    
    <div class="row">
-     <div class="side">Side</div>
+     <div class="side">
+      <label for="birthday">Select Your Birthday:</label>
+
+      <input type="date" id="birthday" name="sign"
+             value="2018-07-22"
+             min="1900-01-01" max="2030-12-31">
+
+             <p>Select a quote to accompany your horoscope:</p>
+
+             <div>
+               <input type="radio" id="inspirational" name="quote" value="inspirational"
+                      checked>
+               <label for="inspirational">Inspirational</label>
+             </div>
+             
+             <div>
+               <input type="radio" id="kanye" name="quote" value="kanye">
+               <label for="kanye">Kanye Says</label>
+             </div>
+             
+             <div>
+               <input type="radio" id="dad-joke" name="quote" value="dad-joke">
+               <label for="dad-joke">Dad Joke</label>
+             </div>                   
+     </div>
      <div class="main">
       <h2>Daily Horoscope</h2>
       <h5>Title description, Dec 7, 2017</h5>
-      <div class="fakeimg" style="height:200px;">Text box for horoscope</div>
+      <div>
+        <form>
+          <textarea readonly>
+         
+          </textarea>
+          </form>
+      </div>
      </div>
    </div>
 
