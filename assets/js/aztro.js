@@ -1,36 +1,31 @@
 const aztroUrl = 'https://aztro.sameerkumar.website/?sign=aries&day=today';
 
-function getAztro(requestUrl) {
-    fetch(requestUrl, {
+// This asynchronously returns the following Object to the callbackFun:
+// data.date_range, data.current_date, data.description, data.compatibility, data.mood, 
+// data.color, data.lucky_number, data.lucky_time
+function getHoroscope(callbackFun, errorCallback) {
+    fetch(aztroUrl, {
 		method: 'POST'
 	})
 	.then (function (response) {
-		console.log(response.status);
-		return (response.json());
+		if (response.ok) {
+			return (response.json());
+		}
+		errorCallback("Horoscope retrieval error.  Code " + response.status);
+		return false;
 	})
 	.then (function (data) {
-		console.log("Here is the return from aztro");
-		console.log(data.date_range);
-		console.log(data.current_date);
-		console.log(data.description);
-		console.log(data.compatibility);
-		console.log(data.mood);
-		console.log(data.color);
-		console.log(data.lucky_number);
-		console.log(data.lucky_time);
-		console.log("-----------------------------");
+		if (data) {
+			callbackFun(data);
+		}
 	});
 }
 
+// This returns the zodiak for a give date
 function getZodiakFromDate(date) {
-
-	console.log("zodiak");
-	console.log(date);
 
 	let month = date.getMonth(); //0-11
 	let day = date.getDate(); //1-31
-
-	console.log(month + "/" + day);
 
 	const zodiak = ["capricorn", "aquarius", "pisces", "aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius"];
 	const zodiakBreakPoints = [20,18,20,19,20,20,22,22,22,22,21,21];
@@ -39,13 +34,5 @@ function getZodiakFromDate(date) {
 		return zodiak[month];
 	} 
 	
-	if (month < 11) {
-		return zodiak[month + 1];
-	}
-
-	return zodiak[0];
+	return zodiak[(month + 1) % 11];
 }
-
-console.log(getZodiakFromDate(new Date()));
-
-getAztro(aztroUrl);

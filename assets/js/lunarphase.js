@@ -41,5 +41,3 @@ const getLunarPhase = (date = new Date()) => {
       return "Waning Crescent";
     return "New";
   }
-
-console.log("Lunar Info: " + getLunarPhase());
