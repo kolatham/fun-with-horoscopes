@@ -74,3 +74,16 @@
       width: 100%;
     }
   }
+
+  .message-board {
+    padding: 80px; 
+    text-align: center;
+    background: #1abc9c; 
+    color: white; 
+  }
+
+  textarea {
+    width: 600px;
+    height: 150px;
+    resize: none;
+  }

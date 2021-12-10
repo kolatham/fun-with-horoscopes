@@ -13,7 +13,9 @@
       <div>
         <h1 class ="title" style="color:white"> Fun With Horoscopes! </h1>
         <p class ="subtitle" style="color:white"> Giving you your daily horoscope with a little <strong>twist</strong>!</p>
-        <p>Date and Time will go here</p>
+        <p>The current date and time is:</p>
+        <span id='ct5'></span>
+        </p>
       </div>
     </section>
    
@@ -64,7 +66,24 @@
      </div>
    </div>
 
-   
+   <section class="message-board">
+    <div class="title">
+      <h2>
+        Leave a message
+      </h2>
+    </div>
+  
+    <form onsubmit="showInput()">
+      <textarea class="message" type="text" id="userInput"></textarea><br/>
+      <input type="submit" value="Submit">
+    </form>
+  
+  
+    <div class="display-area" style="">
+      Comments:
+    </div>
+    <p><span id="display"></span></p>
+  </section>
 
     <script type="text/javascript" src="./assets/js/lunarphase.js"></script>
     <script type="text/javascript" src="./assets/js/inspirational.js"></script>
