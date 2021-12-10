@@ -1,23 +1,25 @@
 const icanhazdadjokeUrl = 'https://icanhazdadjoke.com';
 
-function getIcanhazdadjoke(requestUrl) {
+function getICanHazDadJoke(callbackFun, errorCallback) {
     const headers = new Headers();
     headers.append("User-Agent", "https://github.com/kolatham/fun-with-horoscopes");
     headers.append("Accept", "application/json");
 
-    const request = new Request(requestUrl, {
+    const request = new Request(icanhazdadjokeUrl, {
         headers: headers
     });
 
     fetch(request)
 	.then (function (response) {
-		return (response.json());
+		if (response.ok) {
+			return (response.json());
+		}
+		errorCallback("Horoscope retrieval error.  Code " + response.status);
+		return false;
 	})
 	.then (function (data) {
-        console.log("Here is the return from icanhazdadjoke");
-        console.log(data.joke);
-        console.log("--------------------------------------");
+		if (data) {
+			callbackFun(data);
+		}
 	});
 }
-
-getIcanhazdadjoke(icanhazdadjokeUrl);

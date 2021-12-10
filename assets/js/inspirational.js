@@ -1,21 +1,18 @@
 const inspirationalUrl = 'https://type.fit/api/quotes';
 
-function getInspirational(requestUrl) {
+function getInspirational(callbackFun, errorCallback) {
 
-    fetch(requestUrl)
+    fetch(inspirationalUrl)
 	.then (function (response) {
-		console.log(response.status);
-		return (response.json());
+		if (response.ok) {
+			return (response.json());
+		}
+		errorCallback("Horoscope retrieval error.  Code " + response.status);
+		return false;
 	})
 	.then (function (data) {
-		console.log("Here is the return from Inspirational");
-		console.log("-----------------------------");
-        console.log(data);
-        let index = Math.floor(Math.random()*data.length);
-        console.log(data[index].text);
-        console.log("  -- quote from " + data[index].author);
-		console.log("-----------------------------");
+		if (data) { // select a random quote from the many provided
+			callbackFun(data[Math.floor(Math.random()*data.length)]);
+		}
 	});
 }
-
-getInspirational(inspirationalUrl);

@@ -1,16 +1,19 @@
 const kanyeUrl = 'https://api.kanye.rest';
 
-function getKanye(requestUrl) {
-    fetch(requestUrl)
+// The output is simply:
+// 		Object.quote
+function getKanye(callbackFun, errorCallback) {
+    fetch(kanyeUrl)
 	.then (function (response) {
-		console.log(response.status);
-		return (response.json());
+		if (response.ok) {
+			return (response.json());
+		}
+		errorCallback("Horoscope retrieval error.  Code " + response.status);
+		return false;
 	})
 	.then (function (data) {
-		console.log("Here is the return from Kanye");
-		console.log(data.quote);
-		console.log("-----------------------------");
+		if (data) {
+			callbackFun(data);
+		}
 	});
 }
-
-getKanye(kanyeUrl);
