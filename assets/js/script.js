@@ -1,8 +1,8 @@
-const zodialBtnsEl = document.getElementById("zodiak-btns");
+const zodiacBtnsEl = document.getElementById("zodiac-btns");
 
-zodialBtnsEl.addEventListener("click", zodiakButtonClicked);
+zodiacBtnsEl.addEventListener("click", zodiacButtonClicked);
 
-function zodiakButtonClicked(event) {
+function zodiacButtonClicked(event) {
     if (!(event) || !(event.target.id)) {
         return; // ignore random clicks
     }
@@ -13,7 +13,7 @@ function zodiakButtonClicked(event) {
         return; //log and ignore invalid data
     }
 
-    zodiacSign = zodiacSignBtn.substring(0,zondiacSignBtn.length - 4);
+    zodiacSign = zodiacSignBtn.substring(0,zodiacSignBtn.length - 4);
 
     getHoroscope(displayHoroscopeInfo, errorMsg, zodiacSign, "today"); // asynchronous call
 }
@@ -40,7 +40,7 @@ function displayHoroscopeInfo(data) {
 
     const horoscopeTextEl = document.getElementById("horoscope-text");
 
-    horoscopeTextEl.textContent = "Post Horoscope Data Here!";
+    horoscopeTextEl.textContent = data.description;
 }
 
 getICanHazDadJoke(displayICanHazDadJoke, errorMsg); // asynchronous call

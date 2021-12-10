@@ -1,4 +1,4 @@
-const aztroUrl = 'https://aztro.sameerkumar.website/?sign=aries&day=today';
+const aztroUrl = 'https://aztro.sameerkumar.website/';
 
 // This asynchronously returns the following Object to the callbackFun:
 // data.date_range, data.current_date, data.description, data.compatibility, data.mood, 
