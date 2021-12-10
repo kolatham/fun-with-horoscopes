@@ -3,8 +3,21 @@ const aztroUrl = 'https://aztro.sameerkumar.website/?sign=aries&day=today';
 // This asynchronously returns the following Object to the callbackFun:
 // data.date_range, data.current_date, data.description, data.compatibility, data.mood, 
 // data.color, data.lucky_number, data.lucky_time
-function getHoroscope(callbackFun, errorCallback) {
-    fetch(aztroUrl, {
+function getHoroscope(callbackFun, errorCallback, zSign, dayCode) {
+
+	if (!zSign) {
+		errorCallback("Invalid getHoroscope call, missing zSign");
+		return;
+	}
+
+	if (!dayCode) {
+		dayCode = "today";
+	} else if (dayCode !== "today" && dayCode !== "tomorrow" && dayCode !== "yesterday") {
+		errorCallback("Invalid getHoroscope call: dayCode = " + dayCode);
+		return;
+	}
+
+    fetch(aztroUrl + "?sign=" + zSign + "&day=" + dayCode, {
 		method: 'POST'
 	})
 	.then (function (response) {

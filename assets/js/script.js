@@ -1,3 +1,23 @@
+const zodialBtnsEl = document.getElementById("zodiak-btns");
+
+zodialBtnsEl.addEventListener("click", zodiakButtonClicked);
+
+function zodiakButtonClicked(event) {
+    if (!(event) || !(event.target.id)) {
+        return; // ignore random clicks
+    }
+
+    zodiacSignBtn = event.target.id;
+    if (zodiacSignBtn.substring(zodiacSignBtn.length - 4) != "-btn") {
+        console.log("invalid zodiacSignBtn: " + zodiacSignBtn)
+        return; //log and ignore invalid data
+    }
+
+    zodiacSign = zodiacSignBtn.substring(0,zondiacSignBtn.length - 4);
+
+    getHoroscope(displayHoroscopeInfo, errorMsg, zodiacSign, "today"); // asynchronous call
+}
+
 
 // synchronous calls first...since they'll display first regardless!
 console.log("Lunar Info: " + getLunarPhase()); // calls the main lunarphase.js function synchronously
@@ -16,14 +36,16 @@ function displayKanyeInfo(data) {
     console.log(data);
 }
 
-getHoroscope(displayHoroscopeInfo, errorMsg); // asynchronous call
 function displayHoroscopeInfo(data) {
-    console.log ("Horoscope: ");
-    console.log(data);
+
+    const horoscopeTextEl = document.getElementById("horoscope-text");
+
+    horoscopeTextEl.textContent = "Post Horoscope Data Here!";
 }
 
 getICanHazDadJoke(displayICanHazDadJoke, errorMsg); // asynchronous call
 function displayICanHazDadJoke(data) {
+    
     console.log("icanhazdadjoke: ");
     console.log(data);
 }
@@ -31,6 +53,7 @@ function displayICanHazDadJoke(data) {
 function errorMsg(msg) {
     console.log(msg);
 }
+
 function showInput() {
     console.log('showInput called...')
     event.preventDefault()
@@ -41,9 +64,9 @@ function showInput() {
     display.insertAdjacentHTML('beforeend', userInput);
     display.appendChild(linebreak);
     theForm.reset();
-  }
+}
 
-  function display_ct5() {
+function display_ct5() {
     var x = new Date()
     var ampm = x.getHours( ) >= 12 ? ' PM' : ' AM';
     
@@ -51,9 +74,10 @@ function showInput() {
     x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds() + ampm;
     document.getElementById('ct5').innerHTML = x1;
     display_c5();
-     }
-     function display_c5(){
+}
+
+function display_c5(){
     var refresh=1000; // Refresh rate in milli seconds
     mytime=setTimeout('display_ct5()',refresh)
-    }
-    display_c5()
+}
+display_c5(); // displays the date-time, updating every second.
