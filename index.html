@@ -31,57 +31,22 @@
      <div class="side">
              <p>Select your sign to receive your horoscope:</p>
 
-             <div>
-               <input type="button" id="aries-btn" name="sign" value="Aries: March 21 – April 19">      
-             </div>
-             
-             <div>
-               <input type="button" id="taurus-btn" name="sign" value="Taurus: April 20 – May 20">
-             </div>
-             
-             <div>
-               <input type="button" id="gemini-btn" name="sign" value="Gemini: May 21 – June 20">
-             </div>  
-
-             <div>
-              <input type="button" id="cancer-btn" name="sign" value="Cancer: June 21 – July 22">      
-             </div>
-            
-             <div>
-              <input type="button" id="leo-btn" name="sign" value="Leo: July 23 – Aug. 22">
-             </div>
-            
-             <div>
-              <input type="button" id="virgo-btn" name="sign" value="Virgo: Aug. 23 – Sept. 22">
-             </div>    
-
-             <div>
-              <input type="button" id="libra-btn" name="sign" value="Libra: Sept. 23 – Oct. 22">
-             </div>     
-             
-             <div>
-              <input type="button" id="scorpio-btn" name="sign" value="Scorpio: Oct. 23 – Nov. 21">
-            </div>  
-
-            <div>
+             <input type="button" id="aries-btn" name="sign" value="Aries: March 21 – April 19">      
+             <input type="button" id="taurus-btn" name="sign" value="Taurus: April 20 – May 20">
+             <input type="button" id="gemini-btn" name="sign" value="Gemini: May 21 – June 20">
+             <input type="button" id="cancer-btn" name="sign" value="Cancer: June 21 – July 22">      
+             <input type="button" id="leo-btn" name="sign" value="Leo: July 23 – Aug. 22">
+             <input type="button" id="virgo-btn" name="sign" value="Virgo: Aug. 23 – Sept. 22">
+             <input type="button" id="libra-btn" name="sign" value="Libra: Sept. 23 – Oct. 22">
+             <input type="button" id="scorpio-btn" name="sign" value="Scorpio: Oct. 23 – Nov. 21">
              <input type="button" id="sagittarius-btn" name="sign" value="Sagittarius: Nov. 22 – Dec. 21">      
-            </div>
-           
-            <div>
              <input type="button" id="capricorn-btn" name="sign" value="Capricorn: Dec. 22 – Jan. 19">
-            </div>
-           
-            <div>
              <input type="button" id="aquarius-btn" name="sign" value="Aquarius: Jan. 20 – Feb. 18">
-            </div>    
-                   
-            <div>
              <input type="button" id="pisces-btn" name="sign" value="Pisces: Feb. 19 – March 20">
-            </div>   
      </div>
      <div class="main">
       <h2>Daily Horoscope</h2>
-      <h5>Title description, Dec 7, 2017</h5>
+      <h5 id="horoscope-header"></h5>
       <div>
         <form>
           <textarea id="horoscope-text" readonly>
@@ -100,15 +65,14 @@
     </div>
   
     <form onsubmit="showInput()">
-      <textarea class="message" type="text" id="userInput"></textarea><br/>
+      <textarea class="message" type="text" id="user-input"></textarea><br/>
       <input type="submit" value="Submit">
     </form>
-  
   
     <div class="display-area">
       Comments:
     </div>
-    <p><span id="display"></span></p>
+    <p><span id="display-msgs"></span></p>
   </section>
 
     <script type="text/javascript" src="./assets/js/lunarphase.js"></script>

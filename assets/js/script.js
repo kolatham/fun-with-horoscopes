@@ -15,7 +15,13 @@ function zodiacButtonClicked(event) {
 
     zodiacSign = zodiacSignBtn.substring(0,zodiacSignBtn.length - 4);
 
+    // Now erase the zodiac text field while updating the zodiak header.
+    document.getElementById("horoscope-text").textContent = "";
+    document.getElementById("horoscope-header").textContent = document.getElementById(event.target.id).value;
+
+    // now call to asynchronously set the zodiac text field.
     getHoroscope(displayHoroscopeInfo, errorMsg, zodiacSign, "today"); // asynchronous call
+
 }
 
 
@@ -55,15 +61,21 @@ function errorMsg(msg) {
 }
 
 function showInput() {
-    console.log('showInput called...')
     event.preventDefault()
-    var userInput = document.getElementById("userInput").value;
-    var display = document.getElementById("display");
-    var theForm = document.getElementById("theForm");
+    var userInputEl = document.getElementById("user-input");
+    var displayEl = document.getElementById("display-msgs");
     var linebreak = document.createElement("br");
-    display.insertAdjacentHTML('beforeend', userInput);
-    display.appendChild(linebreak);
-    theForm.reset();
+
+    if (userInputEl.value == "") {
+        errorMsg("Please enter a message before Submitting");
+        return;
+    }
+
+    // putMsgToLocalStorage(moment().format("MM/DD/YY HH:mm:ss") + userInputEl.value);
+
+    displayEl.insertAdjacentHTML('beforeend', userInputEl.value);
+    displayEl.appendChild(linebreak);
+    userInputEl.value = "";
 }
 
 function display_ct5() {
@@ -81,3 +93,7 @@ function display_c5(){
     mytime=setTimeout('display_ct5()',refresh)
 }
 display_c5(); // displays the date-time, updating every second.
+
+function errorMsg(msg) {
+    console.log(msg);
+}

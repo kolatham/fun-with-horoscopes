@@ -61,6 +61,11 @@
     padding: 20px; /* Some padding */
   }
 
+  /* Let zodiak buttons each have their own line */
+  #zodiac-btns input {
+    display: block;
+  }
+
   @media screen and (max-width: 700px) {
     .row {
       flex-direction: column;
