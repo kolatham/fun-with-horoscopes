@@ -1,7 +1,14 @@
-const zodiacBtnsEl = document.getElementById("zodiac-btns");
-const lsKey = "FWH-msg-array";
+const lsKey = "FWH-msg-array"; // this is the local storage key for the messages
 
+const zodiacBtnsEl = document.getElementById("zodiac-btns");
 zodiacBtnsEl.addEventListener("click", zodiacButtonClicked);
+
+const horoscopeBtnsEl = document.getElementById("horoscope-header-btns");
+
+horoscopeBtnsEl.addEventListener("click", horoscopeDateButtonClicked);
+
+var zodiacSign; // used in buttons to retrieve the correct horoscope information
+var zodiacDay = "today"; // used in buttons to retrieve the correct horoscope information ("today, "yesterday", "tomorrow")
 
 function zodiacButtonClicked(event) {
     if (!(event) || !(event.target.id)) {
@@ -18,13 +25,38 @@ function zodiacButtonClicked(event) {
 
     // Now erase the zodiac text field while updating the zodiak header.
     document.getElementById("horoscope-text").textContent = "";
-    document.getElementById("horoscope-header").textContent = document.getElementById(event.target.id).value;
+    document.getElementById("horoscope-header-text").textContent = document.getElementById(event.target.id).value;
 
     // now call to asynchronously set the zodiac text field.
-    getHoroscope(displayHoroscopeInfo, errorMsg, zodiacSign, "today"); // asynchronous call
-
+    getHoroscope(displayHoroscopeInfo, errorMsg, zodiacSign, zodiacDay); // asynchronous call
 }
 
+function horoscopeDateButtonClicked(event) {
+    event.preventDefault();
+
+    let buttonEl = document.getElementById(event.target.id);
+
+    // If they simply clicked on the one already selected, do nothing.
+    if (buttonEl.classList.contains("chosen-btn")) {return;}
+
+    // Because they clicked on a new one -- remove the chosen class from the old one and set it to this new one.
+    let chosenEls = buttonEl.parentElement.getElementsByClassName("chosen-btn");
+    if (chosenEls) {
+        chosenEls[0].classList.remove("chosen-btn");
+    } else {
+        errorMsg("No button was chosen!")
+    }
+
+    // now add the class to this new button
+    buttonEl.classList.add("chosen-btn");
+
+    // now update the horoscope information
+    zodiacDay = buttonEl.getAttribute("name");
+
+    if (zodiacSign) { // only call if they've already selected a zodiac
+        getHoroscope(displayHoroscopeInfo, errorMsg, zodiacSign, zodiacDay);
+    }
+}
 
 // synchronous calls first...since they'll display first regardless!
 console.log("Lunar Info: " + getLunarPhase()); // calls the main lunarphase.js function synchronously

@@ -99,3 +99,13 @@
     display: inline-block;
     text-align: center;
   }
+
+  #horoscope-header-btns input {
+    display: inline-block;
+    border-bottom: none;
+  }
+
+  .date-btn:hover, .chosen-btn {
+    background-color: black;
+    color: white;
+  }
