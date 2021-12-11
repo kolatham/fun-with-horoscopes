@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" type = "text/css" href="./assets/css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Fun With Horoscopes</title>
   </head>
 
@@ -15,7 +15,7 @@
         <h1 class ="title" style="color:white"> Fun With Horoscopes! </h1>
         <p class ="subtitle" style="color:white"> Giving you your daily horoscope with a little <strong>twist</strong>!</p>
         <p>The current date and time is:</p>
-        <span id='ct5'></span>
+        <span id='clock'></span>
         </p>
       </div>
     </section>
@@ -62,27 +62,26 @@
              
              <div>
               <input type="button" id="scorpio-btn" name="sign" value="Scorpio: Oct. 23 – Nov. 21">
-            </div>  
+             </div>  
 
-            <div>
+             <div>
              <input type="button" id="sagittarius-btn" name="sign" value="Sagittarius: Nov. 22 – Dec. 21">      
-            </div>
+             </div>
            
-            <div>
+             <div>
              <input type="button" id="capricorn-btn" name="sign" value="Capricorn: Dec. 22 – Jan. 19">
-            </div>
+             </div>
            
-            <div>
+             <div>
              <input type="button" id="aquarius-btn" name="sign" value="Aquarius: Jan. 20 – Feb. 18">
-            </div>    
+             </div>    
                    
-            <div>
+             <div>
              <input type="button" id="pisces-btn" name="sign" value="Pisces: Feb. 19 – March 20">
-            </div>   
+             </div>   
      </div>
      <div class="main">
       <h2>Daily Horoscope</h2>
-      <h5>Title description, Dec 7, 2017</h5>
       <div>
         <form>
           <textarea id="horoscope-text" readonly>
@@ -112,6 +111,7 @@
     <p><span id="display"></span></p>
   </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script type="text/javascript" src="./assets/js/lunarphase.js"></script>
     <script type="text/javascript" src="./assets/js/inspirational.js"></script>
     <script type="text/javascript" src="./assets/js/kanye.js"></script>
