@@ -4,7 +4,6 @@ const zodiacBtnsEl = document.getElementById("zodiac-btns");
 zodiacBtnsEl.addEventListener("click", zodiacButtonClicked);
 
 const horoscopeBtnsEl = document.getElementById("horoscope-header-btns");
-
 horoscopeBtnsEl.addEventListener("click", horoscopeDateButtonClicked);
 
 var zodiacSign; // used in buttons to retrieve the correct horoscope information
@@ -58,35 +57,11 @@ function horoscopeDateButtonClicked(event) {
     }
 }
 
-// synchronous calls first...since they'll display first regardless!
-console.log("Lunar Info: " + getLunarPhase()); // calls the main lunarphase.js function synchronously
-console.log("Today's Zodiak: " + getZodiakFromDate(new Date())); // displays zodiak info synchronously
-
-// now for the asynchronous calls and their callback functions
-getInspirational(displayInspirationalInfo, errorMsg); // asynchronous call
-function displayInspirationalInfo (data) {
-    console.log("Inspirational:"); // displays the main inspirational.js data
-    console.log(data);
-}
-
-getKanye(displayKanyeInfo, errorMsg); // asynchronous call
-function displayKanyeInfo(data) {
-    console.log ("Kanye quote: "); // displays the main kanye.js data
-    console.log(data);
-}
-
 function displayHoroscopeInfo(data) {
 
     const horoscopeTextEl = document.getElementById("horoscope-text");
 
     horoscopeTextEl.textContent = data.description;
-}
-
-getICanHazDadJoke(displayICanHazDadJoke, errorMsg); // asynchronous call
-function displayICanHazDadJoke(data) {
-    
-    console.log("icanhazdadjoke: ");
-    console.log(data);
 }
 
 function errorMsg(msg) {
@@ -102,8 +77,52 @@ function displayInputOnLoad() {
     }
 }
 
+function postRandomThought() {
+    event.preventDefault();
+
+    let quoteEl = document.getElementById("quote-text");
+
+    quoteEl.textContent = "Random thoughts go here";
+
+    let randomChoice = Math.random();
+
+    displayThought("hmmm, let me think a sec...");
+
+    if (randomChoice < 1/3) {
+        getInspirational(displayInspirationalInfo, errorMsg); // asynchronous call
+    } else if (randomChoice < 2/3) {
+        getICanHazDadJoke(displayICanHazDadJoke, errorMsg); // asynchronous call
+    } else {
+        getKanye(displayKanyeInfo, errorMsg); // asynchronous call
+    }
+}
+
+// here are the asynchronous "random thoughts" callbacks
+function displayInspirationalInfo (data) {
+    let displayMsg = "Inspirational quote of the moment: \n\n";
+
+    displayMsg += data.text;
+    displayMsg += "\n\n    - " + data.author;
+
+    displayThought(displayMsg);
+}
+
+function displayThought(msg) {
+    let textEl = document.getElementById("quote-text");
+
+    textEl.textContent = msg;
+}
+
+function displayKanyeInfo(data) {
+    displayThought("Kanye says: \n\n" + data.quote); // displays the main kanye.js data
+}
+
+function displayICanHazDadJoke(data) {
+    displayThought("Best joke of the moment: \n\n" + data.joke); 
+}
+
 function showInput() {
-    event.preventDefault()
+    event.preventDefault();
     var userInputEl = document.getElementById("user-input");
     var displayEl = document.getElementById("display-msgs");
 
