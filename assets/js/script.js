@@ -1,4 +1,5 @@
 const zodiacBtnsEl = document.getElementById("zodiac-btns");
+const lsKey = "FWH-msg-array";
 
 zodiacBtnsEl.addEventListener("click", zodiacButtonClicked);
 
@@ -60,22 +61,51 @@ function errorMsg(msg) {
     console.log(msg);
 }
 
+function displayInputOnLoad() {
+    let msgs = readLocalStorage();
+    let displayEl = document.getElementById("display-msgs");
+
+    for (msg in msgs) {
+        displayEl.insertAdjacentHTML('beforeend', `<p>${msgs[msg]}</p>`)
+    }
+}
+
 function showInput() {
     event.preventDefault()
     var userInputEl = document.getElementById("user-input");
     var displayEl = document.getElementById("display-msgs");
-    var linebreak = document.createElement("br");
 
-    if (userInputEl.value == "") {
+    let msg = userInputEl.value;
+
+    if (msg == "") {
         errorMsg("Please enter a message before Submitting");
         return;
     }
 
-    // putMsgToLocalStorage(moment().format("MM/DD/YY HH:mm:ss") + userInputEl.value);
+    msg = moment().format("MM/DD/YY HH:mm:ss - ") + msg;
+    writeLocalStorage(msg);
 
-    displayEl.insertAdjacentHTML('beforeend', userInputEl.value);
-    displayEl.appendChild(linebreak);
+    displayEl.insertAdjacentHTML('afterbegin', `<p>${msg}</p>`);
     userInputEl.value = "";
+}
+
+function readLocalStorage() {
+    let msgArray = JSON.parse(window.localStorage.getItem(lsKey));
+    return (msgArray.reverse());
+}
+
+function writeLocalStorage(msg) {
+
+    let msgs = JSON.parse(window.localStorage.getItem(lsKey));
+    if (!msgs) {
+        msgs = [];
+    }
+
+    msgs.push(msg);
+    console.log(msgs);
+    console.log(msg);
+
+    window.localStorage.setItem(lsKey, JSON.stringify(msgs));
 }
 
 function displayTime() {
@@ -91,4 +121,5 @@ function errorMsg(msg) {
 
 $(document).ready(function() {
     displayTime();
+    displayInputOnLoad();
 });

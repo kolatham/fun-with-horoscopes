@@ -87,8 +87,15 @@
     color: white; 
   }
 
-  textarea {
+  textarea, #display-msgs {
     width: 600px;
     height: 150px;
     resize: none;
+    overflow-y: auto;
+    word-wrap: break-word;
+  }
+
+  #display-msgs {
+    display: inline-block;
+    text-align: center;
   }
