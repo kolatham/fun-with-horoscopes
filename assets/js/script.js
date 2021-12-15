@@ -148,6 +148,11 @@ function showInput() {
 
 function readLocalStorage() {
     let msgArray = JSON.parse(window.localStorage.getItem(lsKey));
+
+    if (!msgArray) {
+        return msgArray
+    }
+
     return (msgArray.reverse());
 }
 
@@ -159,8 +164,6 @@ function writeLocalStorage(msg) {
     }
 
     msgs.push(msg);
-    console.log(msgs);
-    console.log(msg);
 
     window.localStorage.setItem(lsKey, JSON.stringify(msgs));
 }
