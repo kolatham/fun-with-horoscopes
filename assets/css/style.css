@@ -1,5 +1,5 @@
 .header {
-    padding: 80px; 
+    padding: 20px; 
     text-align: center;
     background: #1abc9c; 
     color: white; 
@@ -48,15 +48,16 @@
   
   /* Create two unequal columns that sits next to each other */
   /* Sidebar/left column */
-  .side {
+  .left-side, .right-side {
     flex: 30%; /* Set the width of the sidebar */
     background-color: #f1f1f1; /* Grey background color */
     padding: 20px; /* Some padding */
+    text-align: center;
   }
   
   /* Main column */
   .main {
-    flex: 70%; /* Set the width of the main content */
+    flex: 40%; /* Set the width of the main content */
     background-color: white; /* White background color */
     padding: 20px; /* Some padding */
   }
@@ -68,6 +69,10 @@
 .moon-phase-btn{
   justify-content: center;
 }
+  /* Let zodiak buttons each have their own line */
+  #zodiac-btns input {
+    display: block;
+  }
 
   @media screen and (max-width: 700px) {
     .row {
@@ -84,14 +89,43 @@
   }
 
   .message-board {
-    padding: 80px; 
+    padding: 20px; 
     text-align: center;
     background: #1abc9c; 
     color: white; 
   }
 
-  textarea {
+  #horoscope-text, #quote-text {
+    width: 100%;
+  }
+
+  .message, #display-msgs {
     width: 600px;
+  }
+
+  #horoscope-text, .message, #display-msgs, #quote-text {
     height: 150px;
     resize: none;
+    overflow-y: auto;
+    word-wrap: break-word;
+  }
+
+  #display-msgs {
+    display: inline-block;
+    text-align: center;
+  }
+
+  #horoscope-header-btns input {
+    display: inline-block;
+    border-bottom: none;
+  }
+
+  .date-btn:hover, .chosen-btn {
+    background-color: black;
+    color: white;
+  }
+
+  .submit {
+    display: inline-block;
+    text-align: center;
   }

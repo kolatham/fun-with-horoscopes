@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" type = "text/css" href="./assets/css/style.css" />
     <title>Fun With Horoscopes</title>
   </head>
@@ -14,9 +13,7 @@
       <div>
         <h1 class ="title" style="color:white"> Fun With Horoscopes! </h1>
         <p class ="subtitle" style="color:white"> Giving you your daily horoscope with a little <strong>twist</strong>!</p>
-        <p>The current date and time is:</p>
-        <span id='ct5'></span>
-        </p>
+        <p id='clock'></p>
       </div>
     </section>
    
@@ -28,71 +25,50 @@
    </div>
 
    
-   <div id="zodiac-btns" class="row">
-     <div class="side">
-             <p>Select your sign to receive your horoscope:</p>
-
-             <div>
-               <input type="button" id="aries-btn" name="sign" value="Aries: March 21 – April 19">      
-             </div>
-             
-             <div>
-               <input type="button" id="taurus-btn" name="sign" value="Taurus: April 20 – May 20">
-             </div>
-             
-             <div>
-               <input type="button" id="gemini-btn" name="sign" value="Gemini: May 21 – June 20">
-             </div>  
-
-             <div>
-              <input type="button" id="cancer-btn" name="sign" value="Cancer: June 21 – July 22">      
-             </div>
-            
-             <div>
-              <input type="button" id="leo-btn" name="sign" value="Leo: July 23 – Aug. 22">
-             </div>
-            
-             <div>
-              <input type="button" id="virgo-btn" name="sign" value="Virgo: Aug. 23 – Sept. 22">
-             </div>    
-
-             <div>
-              <input type="button" id="libra-btn" name="sign" value="Libra: Sept. 23 – Oct. 22">
-             </div>     
-             
-             <div>
-              <input type="button" id="scorpio-btn" name="sign" value="Scorpio: Oct. 23 – Nov. 21">
-            </div>  
-
-            <div>
-             <input type="button" id="sagittarius-btn" name="sign" value="Sagittarius: Nov. 22 – Dec. 21">      
-            </div>
-           
-            <div>
-             <input type="button" id="capricorn-btn" name="sign" value="Capricorn: Dec. 22 – Jan. 19">
-            </div>
-           
-            <div>
-             <input type="button" id="aquarius-btn" name="sign" value="Aquarius: Jan. 20 – Feb. 18">
-            </div>    
-                   
-            <div>
-             <input type="button" id="pisces-btn" name="sign" value="Pisces: Feb. 19 – March 20">
-            </div>   
+   <div class="row">
+     <div id="zodiac-btns" class="left-side">
+        <p>Select your sign to receive your horoscope:</p>
+        <input type="button" id="aries-btn" name="sign" value="Aries: March 21 – April 19">      
+        <input type="button" id="taurus-btn" name="sign" value="Taurus: April 20 – May 20">
+        <input type="button" id="gemini-btn" name="sign" value="Gemini: May 21 – June 20">
+        <input type="button" id="cancer-btn" name="sign" value="Cancer: June 21 – July 22">      
+        <input type="button" id="leo-btn" name="sign" value="Leo: July 23 – Aug. 22">
+        <input type="button" id="virgo-btn" name="sign" value="Virgo: Aug. 23 – Sept. 22">
+        <input type="button" id="libra-btn" name="sign" value="Libra: Sept. 23 – Oct. 22">
+        <input type="button" id="scorpio-btn" name="sign" value="Scorpio: Oct. 23 – Nov. 21">
+        <input type="button" id="sagittarius-btn" name="sign" value="Sagittarius: Nov. 22 – Dec. 21">      
+        <input type="button" id="capricorn-btn" name="sign" value="Capricorn: Dec. 22 – Jan. 19">
+        <input type="button" id="aquarius-btn" name="sign" value="Aquarius: Jan. 20 – Feb. 18">
+        <input type="button" id="pisces-btn" name="sign" value="Pisces: Feb. 19 – March 20">
      </div>
      <div class="main">
       <h2>Daily Horoscope</h2>
-      <h5>Title description, Dec 7, 2017</h5>
+      <h5 id="horoscope-header">
+        <p id = "horoscope-header-text">Select your zodiac sign<br></p>
+        <span id = "horoscope-header-btns">
+          <input type="button" class = "date-btn" id="yesterday-btn" name="yesterday" value="Yesterday">
+          <input type="button" class = "date-btn chosen-btn" id="today-btn" name="today" value="Today">
+          <input type="button" class = "date-btn" id="tomorrow-btn" name="tomorrow" value="Tomorrow">
+        </span> 
+      </h5>
       <div>
         <form>
           <textarea id="horoscope-text" readonly>
-         
           </textarea>
           </form>
       </div>
      </div>
+     <div class="right-side">
+      <br/>
+      <h2>Random thoughts:</h2>
+      <br/>
+      <form onsubmit="refreshQuote()">
+        <textarea id="quote-text" readonly></textarea>
+        <input class ="submit" type="submit" value="Refresh">
+      </form>
+     </div>
    </div>
-
+   
    <section class="message-board">
     <div class="title">
       <h2>
@@ -101,17 +77,18 @@
     </div>
   
     <form onsubmit="showInput()">
-      <textarea class="message" type="text" id="userInput"></textarea><br/>
-      <input type="submit" value="Submit">
+      <textarea class="message" type="text" id="user-input"></textarea><br/>
+      <input class ="submit" type="submit" value="Submit">
     </form>
-  
   
     <div class="display-area">
       Comments:
     </div>
-    <p><span id="display"></span></p>
+    <p id="display-msgs"></p>
   </section>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script type="text/javascript" src="./assets/js/lunarphase.js"></script>
     <script type="text/javascript" src="./assets/js/inspirational.js"></script>
     <script type="text/javascript" src="./assets/js/kanye.js"></script>
