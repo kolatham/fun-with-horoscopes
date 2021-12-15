@@ -23,3 +23,10 @@ console.log(displayAdvice)
 
 }
 
+function displayTime() {
+  var time = moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
+
+  document.getElementById('clock').textContent = time;
+  setTimeout(displayTime, 1000);
+}
+displayTime()
