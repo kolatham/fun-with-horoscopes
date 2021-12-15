@@ -44,7 +44,7 @@
      <div class="main">
       <h2>Daily Horoscope</h2>
       <h5 id="horoscope-header">
-        <p id = "horoscope-header-text"><br></p>
+        <p id = "horoscope-header-text">Select your zodiac sign<br></p>
         <span id = "horoscope-header-btns">
           <input type="button" class = "date-btn" id="yesterday-btn" name="yesterday" value="Yesterday">
           <input type="button" class = "date-btn chosen-btn" id="today-btn" name="today" value="Today">
@@ -62,13 +62,13 @@
       <br/>
       <h2>Random thoughts:</h2>
       <br/>
-      <form onsubmit="postRandomThought()">
+      <form onsubmit="refreshQuote()">
         <textarea id="quote-text" readonly></textarea>
         <input class ="submit" type="submit" value="Refresh">
       </form>
      </div>
    </div>
-
+   
    <section class="message-board">
     <div class="title">
       <h2>

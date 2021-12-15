@@ -3,6 +3,8 @@ const lsKey = "FWH-msg-array"; // this is the local storage key for the messages
 const zodiacBtnsEl = document.getElementById("zodiac-btns");
 zodiacBtnsEl.addEventListener("click", zodiacButtonClicked);
 
+postRandomThought();
+
 const horoscopeBtnsEl = document.getElementById("horoscope-header-btns");
 horoscopeBtnsEl.addEventListener("click", horoscopeDateButtonClicked);
 
@@ -77,8 +79,12 @@ function displayInputOnLoad() {
     }
 }
 
-function postRandomThought() {
+function refreshQuote() {
     event.preventDefault();
+    postRandomThought();
+}
+
+function postRandomThought() {
 
     let quoteEl = document.getElementById("quote-text");
 
