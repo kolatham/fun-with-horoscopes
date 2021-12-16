@@ -97,6 +97,11 @@
   width: 100%;
 }
 
+.moon-flex img{
+  width: 215px;
+  height: 200px;
+}
+
 .hide {
   display: none;
 }
