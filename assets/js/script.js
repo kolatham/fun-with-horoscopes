@@ -25,7 +25,7 @@ function zodiacButtonClicked(event) {
     zodiacSign = zodiacSignBtn.substring(0,zodiacSignBtn.length - 4);
 
     // Now erase the zodiac text field while updating the zodiak header.
-    document.getElementById("horoscope-text").textContent = "";
+    document.getElementById("horoscope-text").textContent = "I'm thinking about this, one sec...";
     document.getElementById("horoscope-header-text").textContent = document.getElementById(event.target.id).value;
 
     // now call to asynchronously set the zodiac text field.
@@ -55,6 +55,7 @@ function horoscopeDateButtonClicked(event) {
     zodiacDay = buttonEl.getAttribute("name");
 
     if (zodiacSign) { // only call if they've already selected a zodiac
+        document.getElementById("horoscope-text").textContent = "I'm thinking about this, one sec...";
         getHoroscope(displayHoroscopeInfo, errorMsg, zodiacSign, zodiacDay);
     }
 }
