@@ -3,7 +3,7 @@
 ## User Story
 
 ```md
-AS an occassionally bored netizen
+AS an occasionally bored netizen
 I WANT to view my daily horoscope
 SO THAT I can spice up my day a little
 ```

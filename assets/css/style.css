@@ -62,14 +62,45 @@
     padding: 20px; /* Some padding */
   }
 
-.hide {
-  display: none;
+.side{
+  width: 100%;
+}
+
+.button-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .moon-phase-btn{
+  margin: 5px;
+}
+
+.advice-container{
+  width: 100%;
+  display:flex;
   justify-content: center;
 }
-  /* Let zodiak buttons each have their own line */
+
+.advice-container div{
+  width: 70%;
+  
+}
+.moon-flex{
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.moon-flex p{
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}
+  /* Let zodiac buttons each have their own line */
   #zodiac-btns input {
     display: block;
   }
