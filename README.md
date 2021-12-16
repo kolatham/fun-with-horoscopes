@@ -47,7 +47,7 @@ THEN I see information about that specific moon phase
 
 The following picture is a sample of the page's functionality:
 
-![A screen shot of the website](./assets/sample-page.jpg)
+![A screen shot of the website](./assets/images/screen-shot.jpg)
 ## Live URL
 
 https://kolatham.github.io/fun-with-horoscopes/
